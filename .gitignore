@@ -34,6 +34,7 @@ Thumbs.db
 gradlew
 gradlew.bat
 build/
+gradle/wrapper/gradle-wrapper.properties
 
 #NDK
 obj/
@@ -49,3 +50,4 @@ app/libs/
 app/src/main/java/com/techtalk/mvp/mvpandroid/domain/model/
 app/src/main/java/com/techtalk/mvp/mvpandroid/presentation/model/
 app/src/main/res/drawable/
+
