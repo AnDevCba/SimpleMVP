@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MVP Android</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="wrong_username">Wrong username</string>
+    <string name="wrong_password">Wrong password</string>
+    <string name="successful_log_in">Successful log in!</string>
+</resources>
