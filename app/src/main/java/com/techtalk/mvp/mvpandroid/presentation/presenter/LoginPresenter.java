@@ -9,15 +9,12 @@ import com.techtalk.mvp.mvpandroid.presentation.view.LoginView;
 
 /**
  * Represents the Presenter for the Log in View
- * <p>
  *
  * @author @emiliano.gudiño
  */
 public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener {
 
     private LoginView view;
-
-    private LoginInteractor loginInteractor;
 
     /**
      * It attaches a {@param view} that implements {@link LoginView}
@@ -45,8 +42,8 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener {
 
     public void validateCredentials(String username, String password) {
         if (isViewAttached()) {
-            loginInteractor = new LoginInteractorImpl();
-            loginInteractor.login(username, password, this);
+            LoginInteractor loginInteractor = new LoginInteractorImpl(this);
+            loginInteractor.login(username, password);
         }
     }
 

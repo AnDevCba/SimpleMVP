@@ -1,0 +1,50 @@
+apply plugin: 'org.sonarqube'
+apply plugin: 'jacoco'
+
+sonarqube {
+    properties {
+        properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
+        properties["sonar.tests"] = android.sourceSets.test.java.srcDirs
+        properties["sonar.binaries"] = file("build/intermediates/classes/debug")
+        properties["sonar.projectName"] = project.sonarName
+        property "sonar.junit.reportsPath", "build/test-results"
+        property "sonar.jacoco.reportPath", "build/jacoco/testDebugUnitTest.exec"
+        property "sonar.jacoco.reportMissing.force.zero", "true"
+        property "sonar.java.coveragePlugin", "jacoco"
+    }
+}
+
+def coverageSourceDirs = [
+        'src/main/java'
+]
+
+jacoco {
+    toolVersion = "0.7.9"
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
+    group = "Reporting"
+
+    description = "Generate Jacoco coverage reports"
+
+    classDirectories = fileTree(
+            dir: 'build/intermediates/classes/debug/com/techtalk/mvp/mvpandroid',
+            excludes: ['**/R.class',
+                       '**/R$*.class',
+                       '**/BuildConfig.*',
+                       '**/Manifest*.*',
+                       '/ui']
+    )
+
+    additionalSourceDirs = files(coverageSourceDirs)
+    sourceDirectories = files(coverageSourceDirs)
+    executionData = files('build/jacoco/testDebugUnitTest.exec')
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}

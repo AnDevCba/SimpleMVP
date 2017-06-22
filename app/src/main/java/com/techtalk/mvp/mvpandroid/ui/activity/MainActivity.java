@@ -1,5 +1,5 @@
 // MVP Tech Talk
-package com.techtalk.mvp.mvpandroid.presentation.view;
+package com.techtalk.mvp.mvpandroid.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.techtalk.mvp.mvpandroid.R;
 import com.techtalk.mvp.mvpandroid.presentation.presenter.LoginPresenter;
+import com.techtalk.mvp.mvpandroid.presentation.view.LoginView;
 
 /**
  * Main Activity for Log in screen
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements LoginView {
 
     private EditText username;
     private EditText password;
-    private Button logIn;
 
     private LoginPresenter presenter;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements LoginView {
         username = (EditText) findViewById(R.id.et_username);
         password = (EditText) findViewById(R.id.et_password);
 
-        logIn = (Button) findViewById(R.id.btn_logIn);
+        Button logIn = (Button) findViewById(R.id.btn_logIn);
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
