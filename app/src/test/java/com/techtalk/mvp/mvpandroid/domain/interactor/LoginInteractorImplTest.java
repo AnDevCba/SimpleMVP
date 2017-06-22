@@ -61,7 +61,7 @@ public class LoginInteractorImplTest {
 
     @Test
     public void loginWithIncorrectPasswordShouldReturnPasswordError() {
-        interactor.login("Globant", "password");
+        interactor.login("Globant", "123456");
 
         verify(listener).onPasswordError();
     }
@@ -75,7 +75,7 @@ public class LoginInteractorImplTest {
 
     @Test
     public void loginValidCredentialsShouldCallSuccess() {
-        interactor.login("Globant", "Globant");
+        interactor.login("Globant", "Password");
 
         verify(listener).onSuccess();
     }
