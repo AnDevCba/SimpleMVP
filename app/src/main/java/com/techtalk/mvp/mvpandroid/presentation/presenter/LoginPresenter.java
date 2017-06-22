@@ -40,6 +40,12 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener {
         return view != null;
     }
 
+    /**
+     * Validate credential from UI.
+     *
+     * @param username entered.
+     * @param password entered.
+     */
     public void validateCredentials(String username, String password) {
         if (isViewAttached()) {
             LoginInteractor loginInteractor = new LoginInteractorImpl(this);
